@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 1.8
+          distribution: 'microsoft'
       
       - name: Build with Maven
         run: mvn package --file pom.xml
