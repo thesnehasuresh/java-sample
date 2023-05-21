@@ -30,7 +30,7 @@ jobs:
     - name: Build with Maven
       run: mvn package --file pom.xml
     - name: Copy build artifacts
-      run: cp -R target $(Build.ArtifactStagingDirectory)
+      run: cp -R target "${{ runner.workspace }}/target"
     - name: Publish build artifacts
       uses: actions/upload-artifact@v2
       with:
