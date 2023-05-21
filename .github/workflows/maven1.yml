@@ -34,5 +34,5 @@ jobs:
     - name: Publish build artifacts
       uses: actions/upload-artifact@v2
       with:
-        path: $(Build.ArtifactStagingDirectory)
+        path: "${{ runner.workspace }}/target"
         name: drop
