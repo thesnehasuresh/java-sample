@@ -28,13 +28,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn package --file pom.xml
     - name: Copy build artifacts
-        run: |
-          mkdir -p $(Build.ArtifactStagingDirectory)
-          cp -r target/* $(Build.ArtifactStagingDirectory)
-      - name: Publish build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          path: $(Build.ArtifactStagingDirectory)
-          name: drop
+      run: cp -R target $(Build.ArtifactStagingDirectory)
+    - name: Publish build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        path: $(Build.ArtifactStagingDirectory)
+        name: drop
